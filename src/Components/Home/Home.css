@@ -8,7 +8,15 @@
     justify-content: space-between;
 }
 
-.inputSearch {
+.inputConteiner {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#inputSearch {
+    margin: 0;
     width: 97%;
     height: 33px;
     border-radius: 10px;
@@ -20,9 +28,15 @@
     background-size: 22px;
 }
 
-.inputSearch::placeholder {
+#inputSearch::placeholder {
     color: rgb(59, 59, 59);
     font-weight: 600;
+}
+
+#closeButton {
+    width: 25px;
+    height: 25px;
+    display: none;
 }
 
 .container {
