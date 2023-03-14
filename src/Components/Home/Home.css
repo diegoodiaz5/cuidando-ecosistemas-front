@@ -1,0 +1,54 @@
+#home {
+    padding: 0 19px;
+}
+
+.arrowAndAccountBox {
+    display: flex;
+    padding: 46px 0 30px;
+    justify-content: space-between;
+}
+
+.inputSearch {
+    width: 97%;
+    height: 33px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 2px 3px 6px 2px rgb(189, 187, 187);
+    outline-style: none;
+    padding-left: 10px;
+    background: #d5eef2 url("../Images/search.png") no-repeat scroll 96% 50%;
+    background-size: 22px;
+}
+
+.inputSearch::placeholder {
+    color: rgb(59, 59, 59);
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 0;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 164px;
+    height: 131px;
+    border: 1px solid #979797;
+    box-shadow: 0px 5px 6px rgb(158, 158, 158);
+    border-radius: 10px;
+}
+
+.textInBox {
+    margin: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #aad04a;
+}
