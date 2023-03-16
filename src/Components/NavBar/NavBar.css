@@ -1,0 +1,14 @@
+.navBarConteiner {
+    height: 104px;
+    width: 375px;
+    background-color: #d5e8a5;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid black;
+}
+
+.iconsNavBar {
+    width: 44px;
+    height: 44px;
+}
