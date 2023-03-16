@@ -1,2 +1,5 @@
 "# cuidandoEcosistemas"
 
+Routes:
+
+    /home
