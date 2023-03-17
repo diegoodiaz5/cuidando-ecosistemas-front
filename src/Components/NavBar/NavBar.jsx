@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NavBar.css";
+import highlight from "../../Functions/Highlight";
 
 export default function NavBar() {
+    useEffect(() => {
+       highlight();
+    }) 
+
     return(
         <div className="navBarConteiner">
             <img src={require('../Images/home.png')} alt="homeIcon" className="iconsNavBar"/>
