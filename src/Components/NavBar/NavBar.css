@@ -15,6 +15,6 @@
 
 .active {
     background-color: #d5eef2;
-    padding: 10px;
+    outline: 10px solid #d5eef2;
     border-radius: 22px;
 }
