@@ -7,9 +7,7 @@ import NavBar from "../NavBar/NavBar.jsx"
 export default function Home() {
 
     const navigate = useNavigate();
-
     const [valueInput, setValueInput] = useState('');
-
     const handleChange = e => {
         setValueInput(e.target.value);
     }
@@ -31,10 +29,10 @@ export default function Home() {
     }
 
     return (
-        <main>
+        <div>
             <div id="home">
                 <div className="arrowAndAccountBox">
-                    <img src={require('../Images/leftArrow.png')} alt="leftArrow" width="11.78px" height="20px" className="leftArrow" onClick={()=>navigate(-1)}/>
+                    <img src={require('../Images/leftArrow.png')} alt="leftArrow" width="11.78px" height="20px" className="leftArrow" onClick={()=>navigate("/")}/>
                     <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox"/>
                 </div>
                 <div className="inputConteiner">
@@ -58,6 +56,6 @@ export default function Home() {
                 </div>
             </div>
             <NavBar/>
-        </main>
+        </div>
     )
 }
