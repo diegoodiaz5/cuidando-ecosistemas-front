@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./NavBar.css";
 import highlight from "../../Functions/Highlight";
 
+
 export default function NavBar() {
     useEffect(() => {
        highlight();

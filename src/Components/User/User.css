@@ -9,8 +9,7 @@ main{
 }
 
 #logo_front_container{
-    padding-top: 45%;
-    
+    justify-content: center;
     display: flex;
     width: 326px;
     height: 436px;
@@ -23,6 +22,7 @@ main{
     height: 100px;
 }
 #logo{
+    
     width: 100%;
 }
 
