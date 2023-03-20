@@ -15,12 +15,18 @@ export default function Home() {
     useEffect (() => {
         const close = document.getElementById("closeButton");
         const inputSearch = document.getElementById("inputSearch");
+        const contHome = document.getElementById("containerHome");
+        const recents = document.getElementById("recents");
         if (valueInput !== '') {
             close.style.display = "inline";
             inputSearch.style.width = "80%";
+            contHome.style.display = "none";
+            recents.style.display = "block";
         } else{
             close.style.display = "none";
             inputSearch.style.width ="97%"
+            contHome.style.display = "flex";
+            recents.style.display = "none";
         };
     })
 
@@ -39,7 +45,10 @@ export default function Home() {
                     <input type="text" id="inputSearch" placeholder="Search..." value={valueInput} onChange={handleChange}/>
                     <img src={require('../Images/close.png')} alt="closeButton" id="closeButton" onClick={clearInput}/>
                 </div>
-                <div className="container">
+                <div id="recents">
+                    <h2 id="recentsTitle">Recents</h2>
+                </div>
+                <div id="containerHome">
                     <div className="box">
                         <img src={require('../Images/clock.png')} alt="clock" width="32px"/>
                         <p className="textInBox">Reminders</p>
