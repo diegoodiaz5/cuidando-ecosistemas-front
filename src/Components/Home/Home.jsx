@@ -12,7 +12,7 @@ export default function Home() {
         setValueInput(e.target.value);
     }
 
-    useEffect (() => {
+    useEffect(() => {
         const close = document.getElementById("closeButton");
         const inputSearch = document.getElementById("inputSearch");
         const contHome = document.getElementById("containerHome");
@@ -22,9 +22,9 @@ export default function Home() {
             inputSearch.style.width = "80%";
             contHome.style.display = "none";
             recents.style.display = "block";
-        } else{
+        } else {
             close.style.display = "none";
-            inputSearch.style.width ="97%"
+            inputSearch.style.width = "97%"
             contHome.style.display = "flex";
             recents.style.display = "none";
         };
@@ -35,36 +35,36 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <main>
             <div id="home">
                 <div className="arrowAndAccountBox">
-                    <img src={require('../Images/leftArrow.png')} alt="leftArrow" width="11.78px" height="20px" className="leftArrow" onClick={()=>navigate("/")}/>
-                    <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox"/>
+                    <img src={require('../Images/leftArrow.png')} alt="leftArrow" width="11.78px" height="20px" className="leftArrow" onClick={() => navigate("/")} />
+                    <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox" />
                 </div>
                 <div className="inputConteiner">
-                    <input type="text" id="inputSearch" placeholder="Search..." value={valueInput} onChange={handleChange}/>
-                    <img src={require('../Images/close.png')} alt="closeButton" id="closeButton" onClick={clearInput}/>
+                    <input type="text" id="inputSearch" placeholder="Search in Cuidando Ecosistemas" value={valueInput} onChange={handleChange} />
+                    <img src={require('../Images/close.png')} alt="closeButton" id="closeButton" onClick={clearInput} />
                 </div>
                 <div id="recents">
                     <h2 id="recentsTitle">Recents</h2>
                 </div>
                 <div id="containerHome">
                     <div className="box">
-                        <img src={require('../Images/clock.png')} alt="clock" width="32px"/>
+                        <img src={require('../Images/clock.png')} alt="clock" width="32px" />
                         <p className="textInBox">Reminders</p>
                     </div>
                     <div className="box">
-                        <img src={require('../Images/plus.png')} alt="plus" width="32px"/>
+                        <img src={require('../Images/plus.png')} alt="plus" width="32px" />
                         <p className="textInBox">Identify</p>
                     </div>
                     <div className="box">
-                        <img src={require('../Images/bulblight.png')} alt="bulblight" width="32px"/>
+                        <img src={require('../Images/bulblight.png')} alt="bulblight" width="32px" />
                         <p className="textInBox">Care</p>
                     </div>
-                    <img src={require('../Images/logo.png')} alt="logo"/>
+                    <img src={require('../Images/logo.png')} alt="logo" />
                 </div>
             </div>
-            <NavBar/>
-        </div>
+            <NavBar />
+        </main>
     )
 }
