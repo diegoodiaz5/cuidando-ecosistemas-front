@@ -4,10 +4,10 @@ export default function Highlight() {
     if (window.location.pathname.toLocaleLowerCase() === '/forum') {
         paint = 1;
     };
-    if (window.location.pathname.toLocaleLowerCase() === '/add') {
+    if (window.location.pathname.toLocaleLowerCase() === '/addplant') {
         paint = 2;
     };
-    if (window.location.pathname.toLocaleLowerCase() === '/plants') {
+    if (window.location.pathname.toLocaleLowerCase() === '/myplant') {
         paint = 3;
     };
     icons[paint].classList.add("active");
