@@ -1,0 +1,14 @@
+.myplants-container{
+    background-image: url("../Images/background-myplants.png");
+    padding: 5%;
+}
+
+#myplants-title{
+    display: flex;
+    justify-content: space-between;
+    color: #50555C;
+    font-size: 20px;
+}
+#florist{
+    position: absolute;
+}
