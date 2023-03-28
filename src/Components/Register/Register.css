@@ -1,0 +1,57 @@
+#arrowBackRegister {
+    position: absolute;
+    left: 20px;
+    top: 55px;
+}
+
+.inputUserScreen {
+    background-color: #aad04a;
+    width: 339px;
+    height: 52px;
+    border: 1px solid black;
+    border-radius: 22px;
+    margin: 15px 0 12px 0;
+    font-size: 1.2rem;
+    padding-left: 15px;
+    outline: none;
+}
+
+.inputUserScreen::placeholder {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#firstInputRegister {
+    margin-top: 55px;
+}
+
+#signInButton {
+    margin-top: 30px;
+}
+
+.buttonUserScreen {
+    background-color: #d5eef2;
+    width: 165px;
+    height: 36px;
+    border: 1px solid rgb(184, 181, 181);
+    border-radius: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 3px 1px rgba(128, 128, 128, 0.473);
+    font-size: 1rem;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#registerContainer {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
