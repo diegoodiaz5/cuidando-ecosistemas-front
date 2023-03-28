@@ -6,8 +6,10 @@ import MyPlant from "./Components/MyPlant/MyPlant.jsx"
 import Forum from "./Components/Forum/Forum.jsx"
 import UserConfiguration from './Components/UserConfiguration/UserConfiguration';
 import AddPlant from './Components/AddPlant/AddPlant';
+import './Firebase'
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
