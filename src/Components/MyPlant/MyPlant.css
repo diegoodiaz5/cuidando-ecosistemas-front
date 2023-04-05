@@ -1,14 +1,34 @@
-.myplants-container{
+#myplantsContainer {
     background-image: url("../Images/background-myplants.png");
     padding: 5%;
+    height: 708px;
 }
 
-#myplants-title{
+#whiteContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    background-color: white;
+    height: 560px;
+    border-radius: 20px;
+}
+
+#myplantsTitle {
     display: flex;
     justify-content: space-between;
     color: #50555C;
-    font-size: 20px;
+    font-size: 1.1rem
 }
-#florist{
-    position: absolute;
+
+#myplantsTitle>span {
+    display: flex;
+}
+
+#plantsContainer {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
