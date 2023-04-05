@@ -2,6 +2,7 @@ import React from 'react'
 import "./AddPlant.css"
 import NavBar from "../NavBar/NavBar"
 import { useState } from 'react'
+import { getAuth } from "firebase/auth";
 
 export default function AddPlant() {
 
@@ -11,9 +12,37 @@ export default function AddPlant() {
     const [information, setInformation] = useState('');
     const [recomendation, setRecomendation] = useState('');
 
+    const auth = getAuth();
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-    }
+        const user = auth.currentUser;
+        const uid = user.uid;
+        const data = {
+            name: name,
+            image: image,
+            health: health,
+            information: information,
+            recomendation: recomendation,
+            uid: uid
+        };
+        try {
+            const res = await fetch('http://localhost:3001/addplant', {
+                method: "POST",
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            if (!res.ok) {
+                throw new Error("Error en el servidor");
+            }
+            console.log(data);
+        } catch (error) {
+            console.log("No se pudo conectar con el backend");
+        }
+    };
 
     return (
         <>
