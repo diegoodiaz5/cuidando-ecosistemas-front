@@ -1,14 +1,20 @@
 export default function Highlight() {
     let paint = 0;
     const icons = document.querySelectorAll(".iconsNavBar");
-    if (window.location.pathname.toLocaleLowerCase() === '/forum') {
-        paint = 1;
-    };
-    if (window.location.pathname.toLocaleLowerCase() === '/addplant') {
-        paint = 2;
-    };
-    if (window.location.pathname.toLocaleLowerCase() === '/myplant') {
-        paint = 3;
-    };
-    icons[paint].classList.add("active");
+    switch (window.location.pathname.toLocaleLowerCase()) {
+        case '/home': paint = 0;
+            icons[paint].classList.add("active");
+            break;
+        case '/forum': paint = 1;
+            icons[paint].classList.add("active");
+            break;
+        case '/addplant': paint = 2;
+            icons[paint].classList.add("active");
+            break;
+        case '/myplant': paint = 3;
+            icons[paint].classList.add("active");
+            break;
+        default: icons[paint].classList.add("inactive")
+            break;
+    }
 }
