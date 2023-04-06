@@ -1,0 +1,7 @@
+#notificationsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url('../../Images/background-myplants.png');
+    height: 708px;
+}
