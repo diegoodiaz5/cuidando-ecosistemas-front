@@ -1,0 +1,14 @@
+#arrowAndLogoContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#leftArrowImg {
+    padding-left: 18px;
+}
+
+#logoImg {
+    position: relative;
+    padding-left: 105px;
+}
