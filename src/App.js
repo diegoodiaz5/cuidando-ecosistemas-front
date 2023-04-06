@@ -7,9 +7,9 @@ import Forum from "./Components/Forum/Forum.jsx"
 import UserConfiguration from './Components/UserConfiguration/UserConfiguration';
 import AddPlant from './Components/AddPlant/AddPlant';
 import MyProfile from './Components/UserConfiguration/MyProfile/MyProfile'
-import Help from "./Components/Help/Help";
-import Notifications from "./Components/Notifications/Notifications"
-import TermsAndConditions from "./Components/TermsAndConditions/TermsAndConditions"
+import Help from './Components/UserConfiguration/Help/Help';
+import Notifications from './Components/UserConfiguration/Notifications/Notifications';
+import TermsAndConditions from './Components/UserConfiguration/TermsAndConditions/TermsAndConditions';
 import './Firebase'
 
 function App() {
