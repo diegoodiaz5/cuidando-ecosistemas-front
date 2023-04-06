@@ -3,10 +3,10 @@
     height: 708px;
 }
 
-.arrowAndAccountBox {
+.AccountBox {
     display: flex;
     padding: 46px 0 30px;
-    justify-content: space-between;
+    justify-content: flex-end
 }
 
 .inputConteiner {
