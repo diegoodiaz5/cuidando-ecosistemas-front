@@ -18,3 +18,7 @@
     outline: 10px solid #d5eef2;
     border-radius: 22px;
 }
+
+.inactive {
+    background-color: #d5e8a5;
+}
