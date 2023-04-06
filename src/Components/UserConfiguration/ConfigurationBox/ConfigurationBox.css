@@ -1,0 +1,43 @@
+#whiteContainerConfig {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 592px;
+    width: 339px;
+    background-color: white;
+    border-radius: 22px;
+    padding-top: 30px;
+}
+
+#titleConfig {
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+#listContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #AAD04A;
+    width: 164px;
+    height: 232px;
+    list-style: none;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 22px;
+}
+
+#listContainer li {
+    text-align: center;
+}
+
+#termsParagraph {
+    position: relative;
+    top: 100px;
+}
