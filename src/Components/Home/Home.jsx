@@ -39,7 +39,7 @@ export default function Home() {
                         <div id="home">
                             <div className="arrowAndAccountBox">
                                 <img src={require('../Images/leftArrow.png')} alt="leftArrow" width="11.78px" height="20px" className="leftArrow" onClick={() => navigate("/")} />
-                                <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox" />
+                                <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox" onClick={() => navigate("/userConfiguration")} />
                             </div>
                             <div className="inputConteiner">
                                 <input type="text" id="inputSearch" placeholder="Search in Cuidando Ecosistemas" value={valueInput} onChange={handleChange} />
