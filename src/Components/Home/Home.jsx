@@ -31,6 +31,12 @@ export default function Home() {
     const clearInput = () => {
         setValueInput('');
     }
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        navigate("../");
+    }
+
     return (
         <>
             {localStorage.token ?
@@ -38,6 +44,7 @@ export default function Home() {
                     <main>
                         <div id="home">
                             <div className="AccountBox">
+                                <button id="logoutButton" onClick={logout}>Log out</button>
                                 <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox" onClick={() => navigate("/userConfiguration")} />
                             </div>
                             <div className="inputConteiner">

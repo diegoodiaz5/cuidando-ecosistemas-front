@@ -3,10 +3,19 @@
     height: 708px;
 }
 
+#logoutButton {
+    background-color: rgb(0, 0, 0);
+    border-radius: 12px;
+    height: 26px;
+    width: 70px;
+    color: white;
+    border: 1px solid black;
+}
+
 .AccountBox {
     display: flex;
     padding: 46px 0 30px;
-    justify-content: flex-end
+    justify-content: space-between
 }
 
 .inputConteiner {
