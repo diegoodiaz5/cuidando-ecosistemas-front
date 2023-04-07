@@ -16,7 +16,7 @@ export default function ConfigurationBox({ info }) {
                 <li>{info.list.thirdItem}</li>
             </ul>
 
-            <p id='termsParagraph' onClick={() => navigate("termsandconditions")}>Terms and Conditions</p>
+            <p id='termsParagraph' onClick={() => navigate("../termsandconditions")}>Terms and Conditions</p>
         </div>
     )
 }
