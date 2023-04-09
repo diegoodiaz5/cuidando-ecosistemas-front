@@ -1,0 +1,48 @@
+#userProfileContainer {
+    height: 708px;
+}
+
+#firstContainerUserProfile {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#profilePicture {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+#informationUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#informationUser>h3 {
+    width: max-content;
+}
+
+#informationUser>p {
+    width: max-content;
+}
+
+#ulUserProfile {
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #89d389;
+    gap: 30px;
+    padding: 0;
+    height: 60px;
+    align-items: center;
+}
+
+#ulUserProfile>li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+}
