@@ -10,6 +10,7 @@ import MyProfile from './Components/UserConfiguration/MyProfile/MyProfile'
 import Help from './Components/UserConfiguration/Help/Help';
 import Notifications from './Components/UserConfiguration/Notifications/Notifications';
 import TermsAndConditions from './Components/UserConfiguration/TermsAndConditions/TermsAndConditions';
+import UserProfile from './Components/UserProfile/UserProfile';
 import './Firebase'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="help" element={<Help />} />
         <Route path="notifications" element={<Notifications />} />
         <Route path="termsandconditions" element={<TermsAndConditions />} />
+        <Route path="userprofile" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   );
