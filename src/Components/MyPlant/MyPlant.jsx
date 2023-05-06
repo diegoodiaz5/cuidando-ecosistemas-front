@@ -1,42 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./MyPlant.css";
 import NavBar from "../NavBar/NavBar";
 import IndividualPlant from "./IndividualPlant/IndividualPlant"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function MyPlant() {
 
+  const auth = getAuth();
   const [myPlantsList, setMyPlantsList] = useState({});
   const [loading, setLoading] = useState(true);
-  const [userUid, setUserUid] = useState('');
-
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      setUserUid(uid);
-    } else {
-      console.log(`User not loged`)
-    }
-  });
 
   useEffect(() => {
-    const getPlants = async () => {
-      const data = {
-        uid: userUid
+    let uid;
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        uid = user.uid;
+        const getPlants = async () => {
+          const response = await fetch('http://localhost:3001/myPlants', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ uid })
+          });
+          const responseJson = await response.json();
+
+          setMyPlantsList(responseJson);
+          setLoading(false);
+        };
+        getPlants();
       }
-      const response = await fetch('http://localhost:3001/getPlants', {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const responseJson = await response.json();
-      setMyPlantsList(responseJson);
-      setLoading(false);
-    };
-    getPlants();
+    });
   });
 
   return (
@@ -55,7 +50,7 @@ export default function MyPlant() {
 
             <div id="plantsContainer">
               {myPlantsList.map((plant) => (
-                <IndividualPlant plant={plant} />
+                <IndividualPlant plant={plant} key={Math.random()} />
               ))}
             </div>
           }
