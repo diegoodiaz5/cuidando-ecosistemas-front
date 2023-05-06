@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.jsx"
 
@@ -11,7 +11,16 @@ export default function Home() {
     const handleChange = e => {
         setValueInput(e.target.value);
     }
-    useEffect(() => {
+    const clearInput = () => {
+        setValueInput('');
+    }
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        navigate("../");
+    }
+
+    const getIds = () => {
         const close = document.getElementById("closeButton");
         const inputSearch = document.getElementById("inputSearch");
         const contHome = document.getElementById("containerHome");
@@ -27,21 +36,12 @@ export default function Home() {
             contHome.style.display = "flex";
             recents.style.display = "none";
         };
-    })
-    const clearInput = () => {
-        setValueInput('');
     }
-
-    const logout = () => {
-        localStorage.removeItem("token");
-        navigate("../");
-    }
-
     return (
         <>
             {localStorage.token ?
                 (
-                    <main>
+                    <main onLoad={getIds}>
                         <div id="home">
                             <div className="AccountBox">
                                 <button id="logoutButton" onClick={logout}>Log out</button>
