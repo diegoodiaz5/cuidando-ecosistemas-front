@@ -2,7 +2,8 @@ import React from 'react'
 import "./AddPlant.css"
 import NavBar from "../NavBar/NavBar"
 import { useState } from 'react'
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 export default function AddPlant() {
 
@@ -14,11 +15,15 @@ export default function AddPlant() {
 
     const auth = getAuth();
 
+    let uid;
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            uid = user.uid;
+        }
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const user = auth.currentUser;
-        const uid = user.uid;
         const data = {
             name: name,
             image: image,
@@ -28,7 +33,7 @@ export default function AddPlant() {
             uid: uid
         };
         try {
-            const res = await fetch('http://localhost:3001/addplant', {
+            const res = await fetch('http://localhost:3001/newPlant', {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -38,7 +43,6 @@ export default function AddPlant() {
             if (!res.ok) {
                 throw new Error("Error en el servidor");
             }
-            console.log(data);
         } catch (error) {
             console.log("No se pudo conectar con el backend");
         }
@@ -67,7 +71,6 @@ export default function AddPlant() {
                     <label htmlFor="">Recomendation:
                         <textarea type="text" className="inputAddPlant" onChange={(e) => setRecomendation(e.target.value)} />
                     </label>
-
                     <button type='submit' id="addPlantButton">Add!</button>
                 </form>
             </div>
