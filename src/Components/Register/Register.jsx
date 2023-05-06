@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import "./Register.css"
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default function Register({ showLogin }) {
 
+    const navigate = useNavigate();
     const [emailLogin, setEmailLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
+    const [userName, setUserName] = useState('');
 
     const registerFailed = () => {
         const inpUser = document.getElementById("inputUserReg");
@@ -19,33 +22,52 @@ export default function Register({ showLogin }) {
     }
 
     const auth = getAuth();
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, emailLogin, passwordLogin)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(`Welcome ${user.email}`)
-                localStorage.setItem("token", user.getIdToken);
-                window.location.replace("/home")
+        const username = userName;
+        try {
+            const resp = await fetch('http://localhost:3001/register', {
+                method: "POST",
+                body: JSON.stringify({
+                    username: username,
+                    email: emailLogin,
+                    password: passwordLogin
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                },
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+            if (!resp.ok) {
                 registerFailed();
-                console.log(`${errorCode}, ${errorMessage}`)
-            });
+                console.log("Error in the server")
+            } else {
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        localStorage.setItem("token", user.getIdToken);
+                        navigate("/home");
+                    } else {
+
+                    }
+                });
+            }
+        } catch (err) {
+            console.log("Error!")
+        }
     }
 
     return (
         <div id="registerContainer">
             <img src={require('../Images/leftArrow.png')} alt="arrowBack" onClick={showLogin} id="arrowBackRegister" />
             <form onSubmit={handleSubmit} id="registerForm">
-
+                <input type="text" placeholder='Username' className='inputUserScreen' id='inputUsernameReg' onChange={(e) => setUserName(e.target.value)} />
                 <input type="email" placeholder="Email" className="inputUserScreen" id="inputUserReg" onChange={(e) => setEmailLogin(e.target.value)} />
                 <input type="password" placeholder="Password" className="inputUserScreen" id="inputPWReg" onChange={(e) => setPasswordLogin(e.target.value)} />
-                <button className="buttonUserScreen" onClick={showLogin} id="signInButton">Sign In</button>
                 <button className="buttonUserScreen" type="submit">Register</button>
             </form>
+            <button className="buttonUserScreen" onClick={showLogin} id="signInButton">Sign In</button>
+
+
         </div>
     )
+
 }
