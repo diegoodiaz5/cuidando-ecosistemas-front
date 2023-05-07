@@ -55,11 +55,11 @@ export default function UserProfile() {
             </li>
             <li>
               <p>Followers</p>
-              0
+              {userData.information.followers}
             </li>
             <li>
               <p>Following</p>
-              0
+              {userData.information.following}
             </li>
           </ul>
 
