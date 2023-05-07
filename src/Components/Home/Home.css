@@ -1,6 +1,7 @@
 #home {
     padding: 0 19px;
     height: 708px;
+    background: url('../Images/background-myplants.png');
 }
 
 #logoutButton {
@@ -68,6 +69,7 @@
     border: 1px solid #979797;
     box-shadow: 0px 5px 6px rgb(158, 158, 158);
     border-radius: 10px;
+    background-color: white;
 }
 
 .textInBox {
