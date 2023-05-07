@@ -25,7 +25,6 @@ export default function MyPlant() {
             body: JSON.stringify({ uid })
           });
           const responseJson = await response.json();
-
           setMyPlantsList(responseJson);
           setLoading(false);
         };
@@ -46,7 +45,16 @@ export default function MyPlant() {
           <img src={require('../Images/More.png')} alt="more" />
         </div>
         <section id="whiteContainer">
-          {loading ? <img src={require('../Images/loading.gif')} alt="loadingGif" /> :
+          {loading ? <div id="loadingDiv">
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+            <img src={require('../Images/greyFlower.jpg')} alt="greyFlower" className="greyFlower" />
+          </div> :
 
             <div id="plantsContainer">
               {myPlantsList.map((plant) => (

@@ -23,7 +23,8 @@
     display: flex;
 }
 
-#plantsContainer {
+#plantsContainer,
+#loadingDiv {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -35,12 +36,20 @@
 }
 
 /* Hide Scrollbar for Chrome */
-#plantsContainer::-webkit-scrollbar {
+#plantsContainer::-webkit-scrollbar,
+#loadingDiv::-webkit-scrollbar {
     display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-#plantsContainer {
+#plantsContainer,
+#loadingDiv {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.greyFlower {
+    width: 110px;
+    height: 110px;
+    border-radius: 10px;
 }
