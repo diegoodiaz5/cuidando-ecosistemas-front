@@ -45,7 +45,7 @@ export default function Home() {
                         <div id="home">
                             <div className="AccountBox">
                                 <button id="logoutButton" onClick={logout}>Log out</button>
-                                <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" width="20px" height="20px" className="userAccountBox" onClick={() => navigate("/userProfile")} />
+                                <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" className="userAccountBox" onClick={() => navigate("/userProfile")} />
                             </div>
                             <div className="inputConteiner">
                                 <input type="text" id="inputSearch" placeholder="Search in Cuidando Ecosistemas" value={valueInput} onChange={handleChange} />

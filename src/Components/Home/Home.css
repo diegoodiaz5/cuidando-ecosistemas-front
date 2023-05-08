@@ -13,6 +13,10 @@
     border: 1px solid black;
 }
 
+.userAccountBox {
+    padding-right: 10px;
+}
+
 .AccountBox {
     display: flex;
     padding: 46px 0 30px;
