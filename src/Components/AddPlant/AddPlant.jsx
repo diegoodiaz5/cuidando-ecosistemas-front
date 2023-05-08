@@ -59,8 +59,8 @@ export default function AddPlant() {
                     <label className='labelForm'>Information:
                         <textarea type="text" className="inputAddPlant" {...register("information")} />
                     </label>
-                    <label className='labelForm'>Recomendation:
-                        <textarea type="text" className="inputAddPlant" {...register("recomendation")} />
+                    <label className='labelForm'>Recommendation:
+                        <textarea type="text" className="inputAddPlant" {...register("recommendation")} />
                     </label>
                     <button type='submit' id="addPlantButton">Add</button>
                 </form>
