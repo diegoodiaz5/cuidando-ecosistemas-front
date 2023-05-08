@@ -1,0 +1,11 @@
+.photoAndName {}
+
+.flowerPhoto {
+    width: 150px;
+    height: 150px;
+}
+
+.commentPostInput {
+    width: 150px;
+    border-radius: 3px;
+}
