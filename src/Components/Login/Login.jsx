@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Login.css"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 
 export default function Login({ showRegister }) {
@@ -19,21 +18,27 @@ export default function Login({ showRegister }) {
         inputUser.style.backgroundColor = "#f08080";
     }
 
-    const auth = getAuth();
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(auth, emailLogin, passwordLogin)
-            .then(() => {
-                const user = auth.currentUser;
-                localStorage.setItem("token", user.getIdToken);
-                window.location.replace("/home")
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(`${errorCode}, ${errorMessage}`)
-                loginFailed();
+        try {
+            const res = await fetch('http://localhost:3001/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: emailLogin,
+                    password: passwordLogin
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
+            const resJson = await res.json();
+            const token = resJson.stsTokenManager.accessToken;
+            localStorage.setItem("token", token);
+            window.location.replace("/home")
+        } catch (error) {
+            loginFailed();
+            console.log(error);
+        }
     };
 
 
