@@ -28,7 +28,7 @@ export default function Forum() {
             }
         }
         getAllPlants();
-    })
+    }, [])
 
     return (
         <section id='forum'>
