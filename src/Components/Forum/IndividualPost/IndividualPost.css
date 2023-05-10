@@ -1,11 +1,55 @@
-.photoAndName {}
+.conteinerIndividualPost {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photoAndName {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+.userNameInPostForum {
+    font-size: 1.2rem;
+}
+
+.profilePhotoForum {
+    width: 30px;
+}
 
 .flowerPhoto {
-    width: 150px;
-    height: 150px;
+    width: 95%;
+    height: auto;
+}
+
+.conteinerInputComments {
+    width: 100%;
+    padding-left: 9px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .commentPostInput {
-    width: 150px;
+    width: 88%;
     border-radius: 3px;
+    height: 25px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.288);
+    padding-left: 7px;
+}
+
+.commentPostInput:focus {
+    outline: none;
+    border-bottom: 1px solid grey;
+}
+
+.sendImage {
+    height: 20px;
 }
