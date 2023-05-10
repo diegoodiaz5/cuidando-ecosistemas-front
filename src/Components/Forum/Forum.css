@@ -33,3 +33,26 @@
     justify-content: center;
     align-items: center;
 }
+
+.individualPost {
+    width: 500px;
+}
+
+#postsConteiner {
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+#postsConteiner::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#postsConteiner {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
