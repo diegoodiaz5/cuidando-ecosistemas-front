@@ -20,6 +20,16 @@ export default function AddPlant() {
     const submit = async (data) => {
         data.uid = uid;
         try {
+
+            const resp = await fetch(`http://localhost:3001/userId/${uid}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+
+            const respJson = await resp.json();
+            data.authorUsername = respJson.information.username;
+            data.authorPhoto = respJson.information.photo;
             const res = await fetch('http://localhost:3001/newPlant', {
                 method: "POST",
                 body: JSON.stringify(data),
