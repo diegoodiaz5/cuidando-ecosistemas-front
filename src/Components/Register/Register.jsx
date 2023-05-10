@@ -31,7 +31,8 @@ export default function Register({ showLogin }) {
                 body: JSON.stringify({
                     username: username,
                     email: emailLogin,
-                    password: passwordLogin
+                    password: passwordLogin,
+                    photo: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
                 }),
                 headers: {
                     "Content-Type": "application/json"
