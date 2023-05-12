@@ -1,9 +1,10 @@
 import React from 'react'
 import "./Login.css"
 import { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 export default function Login({ showRegister }) {
-
+    const auth = getAuth();
     const [emailLogin, setEmailLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
 
@@ -20,25 +21,17 @@ export default function Login({ showRegister }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const res = await fetch('http://localhost:3001/login', {
-                method: 'POST',
-                body: JSON.stringify({
-                    email: emailLogin,
-                    password: passwordLogin
-                }),
-                headers: {
-                    "Content-Type": "application/json",
-                },
+        await signInWithEmailAndPassword(auth, emailLogin, passwordLogin)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                const token = user.stsTokenManager.accessToken;
+                localStorage.setItem("token", token);
+                window.location.replace("/home");
+            })
+            .catch((error) => {
+                console.log(error)
+                loginFailed();
             });
-            const resJson = await res.json();
-            const token = resJson.stsTokenManager.accessToken;
-            localStorage.setItem("token", token);
-            window.location.replace("/home")
-        } catch (error) {
-            loginFailed();
-            console.log(error);
-        }
     };
 
 
