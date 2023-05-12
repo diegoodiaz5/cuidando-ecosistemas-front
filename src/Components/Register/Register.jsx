@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import "./Register.css"
 import { useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 export default function Register({ showLogin }) {
 
+    const auth = getAuth();
     const navigate = useNavigate();
     const [emailLogin, setEmailLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
@@ -21,39 +22,34 @@ export default function Register({ showLogin }) {
         inpPWReg.style.backgroundColor = "#f08080";
     }
 
-    const auth = getAuth();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const username = userName;
-        try {
-            const resp = await fetch('http://localhost:3001/register', {
-                method: "POST",
-                body: JSON.stringify({
-                    username: username,
-                    email: emailLogin,
-                    password: passwordLogin,
-                    photo: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
-                }),
-                headers: {
-                    "Content-Type": "application/json"
-                },
-            })
-            if (!resp.ok) {
-                registerFailed();
-                console.log("Error in the server")
-            } else {
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        localStorage.setItem("token", user.getIdToken);
-                        navigate("/home");
-                    } else {
 
-                    }
-                });
-            }
-        } catch (err) {
-            console.log("Error!")
-        }
+        createUserWithEmailAndPassword(auth, emailLogin, passwordLogin)
+            .then(async (userCredential) => {
+                const user = userCredential.user;
+                const uid = user.uid;
+                await fetch('http://localhost:3001/register', {
+                    method: "POST",
+                    body: JSON.stringify({
+                        username: username,
+                        uid: uid,
+                        photo: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+                    }),
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                const token = user.stsTokenManager.accessToken;
+                localStorage.setItem("token", token);
+                navigate("/home");
+            })
+            .catch((error) => {
+                registerFailed();
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
     }
 
     return (
