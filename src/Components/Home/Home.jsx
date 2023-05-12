@@ -3,6 +3,7 @@ import "./Home.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.jsx"
+import { getAuth, signOut } from 'firebase/auth';
 
 export default function Home() {
 
@@ -16,8 +17,14 @@ export default function Home() {
     }
 
     const logout = () => {
-        localStorage.removeItem("token");
-        navigate("../");
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            localStorage.removeItem("token");
+            navigate("../");
+        }).catch((error) => {
+            console.log(error);
+        });
+
     }
 
     const getIds = () => {
