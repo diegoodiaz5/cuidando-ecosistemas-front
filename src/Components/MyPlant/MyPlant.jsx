@@ -9,13 +9,10 @@ export default function MyPlant() {
   const auth = getAuth();
   const [myPlantsList, setMyPlantsList] = useState({});
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    let uid;
-
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        uid = user.uid;
+        const uid = user.uid;
         const getPlants = async () => {
           const response = await fetch('http://localhost:3001/myPlants', {
             method: "POST",
@@ -25,13 +22,14 @@ export default function MyPlant() {
             body: JSON.stringify({ uid })
           });
           const responseJson = await response.json();
-          setMyPlantsList(responseJson);
+          const plants = responseJson.plants;
+          setMyPlantsList(plants);
           setLoading(false);
         };
         getPlants();
       }
     });
-  });
+  }, [auth]);
 
   return (
     <>
