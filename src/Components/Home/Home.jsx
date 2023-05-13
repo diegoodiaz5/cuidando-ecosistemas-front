@@ -4,10 +4,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.jsx"
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
+
 export default function Home() {
 
+    const [loading, setLoading] = useState(false);
+    const [username, setUsername] = useState('');
+    const [userPhoto, setUserPhoto] = useState('');
     let uid;
-    let username;
+
+    const auth = getAuth();
     const getUser = async () => {
         const res = await fetch(`http://localhost:3001/userId/${uid}`, {
             headers: {
@@ -15,17 +20,20 @@ export default function Home() {
             }
         })
         const resJson = await res.json();
-        username = resJson.information.username;
+        const usernameData = await resJson.information.username;
+        const photoData = await resJson.information.photo;
+        setUsername(usernameData);
+        setUserPhoto(photoData);
+        setLoading(true);
+        console.log(username);
     };
-
-    const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
         if (user) {
             uid = user.uid;
             getUser();
-        } else {
         }
     });
+
 
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
@@ -66,15 +74,15 @@ export default function Home() {
     }
     return (
         <>
-            {localStorage.token ?
+            {loading &&
                 (
                     <main onLoad={getIds}>
                         <div id="home">
                             <div className="AccountBox">
                                 <button id="logoutButton" onClick={logout}>Log out</button>
-                                <div>
-                                    <p>{username}</p>
-                                    <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" className="userAccountBox" onClick={() => navigate("/userProfile")} />
+                                <div id="usernameAndAccountBox">
+                                    <p id="usernameParagraph">{username}</p>
+                                    <img src={userPhoto} alt="userAccountBox" className="userAccountBox" onClick={() => navigate("/userProfile")} />
                                 </div>
                             </div>
                             <div className="inputConteiner">
@@ -102,7 +110,7 @@ export default function Home() {
                         </div>
                         <NavBar />
                     </main>
-                ) : window.location.replace("/")
+                )
             }
         </>
     )

@@ -15,6 +15,9 @@
 
 .userAccountBox {
     padding-right: 10px;
+    border-radius: 10px;
+    width: 42px;
+    height: 32px;
 }
 
 .AccountBox {
@@ -92,4 +95,16 @@
 
 #recentsTitle {
     padding-bottom: 30px;
+}
+
+#usernameAndAccountBox {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#usernameParagraph {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
 }
