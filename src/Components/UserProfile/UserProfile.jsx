@@ -34,40 +34,47 @@ export default function UserProfile() {
 
   return (
     <>
-      {loading ? <div>Hola</div> : <section id='userProfileSection'>
-        <div id='userProfileContainer'>
-          <ArrowAndLogo />
-          <div id='firstContainerUserProfile'>
-            <img id='profilePicture' src={require("../Images/avatarDefault.webp")} alt="profilePicture" />
-            <div id='informationUser'>
-              <h3>{userData.information.username}</h3>
-              <p>Information about the user </p>
+      {!loading &&
+        <>
+          <section id='userProfileSection'>
+            <div id='userProfileContainer'>
+              <ArrowAndLogo />
+              <h1 id='editProfileTitle'>Edit profile</h1>
+              <div id='firstContainerUserProfile'>
+                <div id='photoContainerProfile'>
+                  <img src={userData.information.photo} alt='profilePhoto' id='photoProfile' />
+                  <p>Edit photo</p>
+                </div>
+                <div className="usernameContainerProfile">
+                  <p className='titlesProfile'>Username</p>
+                  <p className='userParagraphInfo'>{userData.information.username}</p>
+                </div>
+                <div className="usernameContainerProfile">
+                  <p className='titlesProfile'>Email</p>
+                  <p className='userParagraphInfo'>Aca iria el email</p>
+                </div>
+                <div className="usernameContainerProfile">
+                  <p className='titlesProfile'>Description</p>
+                  {userData.information.description !== '' ?
+                    <p className='userParagraphInfo'>{userData.information.description}</p> :
+                    <p className='userParagraphInfo'>Type something about you</p>}
+                </div>
+
+              </div>
+
+              <h1 id='statisticsTitle'>Statistics</h1>
+              <section id='statisticsSection'>
+                <p>Posts: {userData.information.posts}</p>
+                <p>Comments: {userData.information.comments}</p>
+                <p>Registered since: </p>
+              </section>
             </div>
-          </div>
-          <ul id='ulUserProfile'>
-            <li>
-              <p>Plants</p>
-              {userData.information.posts}
-            </li>
-            <li>
-              <p>Comments</p>
-              {userData.information.comments}
-            </li>
-            <li>
-              <p>Followers</p>
-              {userData.information.followers}
-            </li>
-            <li>
-              <p>Following</p>
-              {userData.information.following}
-            </li>
-          </ul>
-
-
-        </div>
-        <h1>User posts here</h1>
-        <NavBar />
-      </section>}
-    </>
+            <div id='termsAndConditionParagraph'>
+              <p>Terms and Conditions</p>
+            </div>
+          </section>
+          <NavBar />
+        </>
+      }</>
   )
 }

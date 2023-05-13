@@ -2,8 +2,14 @@
     height: 708px;
 }
 
+#editProfileTitle {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
 #firstContainerUserProfile {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 20px;
 }
@@ -28,21 +34,44 @@
     width: max-content;
 }
 
-#ulUserProfile {
-    margin-top: 20px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    background-color: #89d389;
-    gap: 30px;
-    padding: 0;
-    height: 60px;
-    align-items: center;
+#photoProfile {
+    height: 70px;
+    width: 70px;
 }
 
-#ulUserProfile>li {
+#photoContainerProfile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1rem;
+    gap: 5px;
+}
+
+#statisticsTitle {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.usernameContainerProfile {
+    padding: 0 10px;
+}
+
+.titlesProfile {
+    font-size: .9rem;
+}
+
+.userParagraphInfo {
+    border-bottom: 1px solid black;
+}
+
+#statisticsSection {
+    padding-left: 10px;
+    font-size: 1.2rem;
+}
+
+#termsAndConditionParagraph {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 120px
 }
