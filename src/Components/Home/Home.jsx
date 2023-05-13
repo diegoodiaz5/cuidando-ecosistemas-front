@@ -3,9 +3,29 @@ import "./Home.css"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.jsx"
-import { getAuth, signOut } from 'firebase/auth';
-
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 export default function Home() {
+
+    let uid;
+    let username;
+    const getUser = async () => {
+        const res = await fetch(`http://localhost:3001/userId/${uid}`, {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        const resJson = await res.json();
+        username = resJson.information.username;
+    };
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            uid = user.uid;
+            getUser();
+        } else {
+        }
+    });
 
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
@@ -52,7 +72,10 @@ export default function Home() {
                         <div id="home">
                             <div className="AccountBox">
                                 <button id="logoutButton" onClick={logout}>Log out</button>
-                                <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" className="userAccountBox" onClick={() => navigate("/userProfile")} />
+                                <div>
+                                    <p>{username}</p>
+                                    <img src={require('../Images/userAccountBox.png')} alt="userAccountBox" className="userAccountBox" onClick={() => navigate("/userProfile")} />
+                                </div>
                             </div>
                             <div className="inputConteiner">
                                 <input type="text" id="inputSearch" placeholder="Search in Cuidando Ecosistemas" value={valueInput} onChange={handleChange} />
