@@ -69,9 +69,6 @@ export default function UserProfile() {
                 <p>Registered since: </p>
               </section>
             </div>
-            <div id='termsAndConditionParagraph'>
-              <p>Terms and Conditions</p>
-            </div>
           </section>
           <NavBar />
         </>
