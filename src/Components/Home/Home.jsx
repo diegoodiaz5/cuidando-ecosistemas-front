@@ -79,11 +79,18 @@ export default function Home() {
                     <main onLoad={getIds}>
                         <div id="home">
                             <div className="AccountBox">
-                                <button id="logoutButton" onClick={logout}>Log out</button>
                                 <div id="usernameAndAccountBox">
-                                    <p id="usernameParagraph">{username}</p>
                                     <img src={userPhoto} alt="userAccountBox" className="userAccountBox" onClick={() => navigate("/userProfile")} />
+                                    <p id="usernameParagraph">{username}</p>
                                 </div>
+                                <div id="ulHome">
+                                    <img src={require('../Images/menu.png')} alt="menuIcon" />
+                                    <div id="subUlHome">
+                                        <p className="itemUlHome">Terms and conditions</p>
+                                        <p className="itemUlHome" onClick={logout}>Logout</p>
+                                    </div>
+                                </div>
+
                             </div>
                             <div className="inputConteiner">
                                 <input type="text" id="inputSearch" placeholder="Search in Cuidando Ecosistemas" value={valueInput} onChange={handleChange} />

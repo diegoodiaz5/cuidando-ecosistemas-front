@@ -14,16 +14,16 @@
 }
 
 .userAccountBox {
-    padding-right: 10px;
     border-radius: 10px;
-    width: 42px;
+    width: 32px;
     height: 32px;
 }
 
 .AccountBox {
     display: flex;
     padding: 46px 0 30px;
-    justify-content: space-between
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .inputConteiner {
@@ -99,12 +99,30 @@
 
 #usernameAndAccountBox {
     display: flex;
-    gap: 10px;
     align-items: center;
+    gap: 6px;
 }
 
 #usernameParagraph {
     margin: 0;
     padding: 0;
     font-size: 1rem;
+}
+
+#ulHome {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    position: absolute;
+    right: 20px;
+}
+
+#subUlHome {
+    background-color: white;
+}
+
+.itemUlHome {
+    text-align: right;
+    width: 90px;
 }
