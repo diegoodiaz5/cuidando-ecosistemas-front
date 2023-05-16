@@ -25,7 +25,6 @@ export default function Home() {
         setUsername(usernameData);
         setUserPhoto(photoData);
         setLoading(true);
-        console.log(username);
     };
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -39,6 +38,22 @@ export default function Home() {
     const [valueInput, setValueInput] = useState('');
     const handleChange = e => {
         setValueInput(e.target.value);
+        const close = document.getElementById("closeButton");
+        const inputSearch = document.getElementById("inputSearch");
+        const contHome = document.getElementById("containerHome");
+        const recents = document.getElementById("recents");
+        if (valueInput !== '') {
+            close.style.display = "inline";
+            inputSearch.style.width = "80%";
+            contHome.style.display = "none";
+            recents.style.display = "block";
+        } else {
+            close.style.display = "none";
+            inputSearch.style.width = "97%"
+            contHome.style.display = "flex";
+            recents.style.display = "none";
+        };
+        console.log(valueInput)
     }
     const clearInput = () => {
         setValueInput('');
@@ -55,23 +70,20 @@ export default function Home() {
 
     }
 
+    let dropdownMenu = document.getElementById('subUlHome');
+
     const getIds = () => {
-        const close = document.getElementById("closeButton");
-        const inputSearch = document.getElementById("inputSearch");
-        const contHome = document.getElementById("containerHome");
-        const recents = document.getElementById("recents");
-        if (valueInput !== '') {
-            close.style.display = "inline";
-            inputSearch.style.width = "80%";
-            contHome.style.display = "none";
-            recents.style.display = "block";
-        } else {
-            close.style.display = "none";
-            inputSearch.style.width = "97%"
-            contHome.style.display = "flex";
-            recents.style.display = "none";
-        };
+        dropdownMenu = document.getElementById('subUlHome');
     }
+
+    const showDropdownMenu = () => {
+        if (dropdownMenu.style.display === "inline") {
+            dropdownMenu.style.display = "none"
+        } else {
+            dropdownMenu.style.display = "inline"
+        }
+    }
+
     return (
         <>
             {loading &&
@@ -84,10 +96,11 @@ export default function Home() {
                                     <p id="usernameParagraph">{username}</p>
                                 </div>
                                 <div id="ulHome">
-                                    <img src={require('../Images/menu.png')} alt="menuIcon" />
+                                    <img src={require('../Images/menu.png')} alt="menuIcon" onClick={showDropdownMenu} />
                                     <div id="subUlHome">
-                                        <p className="itemUlHome">Terms and conditions</p>
-                                        <p className="itemUlHome" onClick={logout}>Logout</p>
+                                        <p className="itemUlHome paragraphBorderBottom">My profile</p>
+                                        <p className="itemUlHome paragraphBorderBottom" onClick={() => navigate("/termsandconditions")}>Terms and conditions</p>
+                                        <p className="itemUlHome" id="logoutButton" onClick={logout}>Logout</p>
                                     </div>
                                 </div>
 
