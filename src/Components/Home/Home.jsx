@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar/NavBar.jsx"
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
@@ -33,7 +33,6 @@ export default function Home() {
         }
     });
 
-
     const navigate = useNavigate();
     const [valueInput, setValueInput] = useState('');
     const handleChange = e => {
@@ -42,7 +41,7 @@ export default function Home() {
         const inputSearch = document.getElementById("inputSearch");
         const contHome = document.getElementById("containerHome");
         const recents = document.getElementById("recents");
-        if (valueInput !== '') {
+        if (e.target.value !== '') {
             close.style.display = "inline";
             inputSearch.style.width = "80%";
             contHome.style.display = "none";
@@ -53,10 +52,17 @@ export default function Home() {
             contHome.style.display = "flex";
             recents.style.display = "none";
         };
-        console.log(valueInput)
     }
     const clearInput = () => {
         setValueInput('');
+        const close = document.getElementById("closeButton");
+        const inputSearch = document.getElementById("inputSearch");
+        const contHome = document.getElementById("containerHome");
+        const recents = document.getElementById("recents");
+        close.style.display = "none";
+        inputSearch.style.width = "97%"
+        contHome.style.display = "flex";
+        recents.style.display = "none";
     }
 
     const logout = () => {
@@ -83,6 +89,23 @@ export default function Home() {
             dropdownMenu.style.display = "inline"
         }
     }
+
+    const users = [];
+
+    const getUsers = async () => {
+        const res = await fetch('http://localhost:3001/',
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+        const resJson = await res.json();
+        await resJson.forEach(element => users.push([element.information.username, element.information.photo]));
+    }
+
+    useEffect(() => {
+        getUsers();
+    }, [])
 
     return (
         <>
