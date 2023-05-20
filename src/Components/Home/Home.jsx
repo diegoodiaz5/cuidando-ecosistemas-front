@@ -90,7 +90,7 @@ export default function Home() {
         }
     }
 
-    const users = [];
+    const [users, setUsers] = useState([]);
 
     const getUsers = async () => {
         const res = await fetch('http://localhost:3001/',
@@ -100,12 +100,12 @@ export default function Home() {
                 },
             });
         const resJson = await res.json();
-        await resJson.forEach(element => users.push([element.information.username, element.information.photo]));
+        setUsers(resJson);
     }
 
     useEffect(() => {
         getUsers();
-    }, [])
+    }, [users])
 
     return (
         <>
